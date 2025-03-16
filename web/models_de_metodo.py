@@ -8,15 +8,7 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nombre
-
-class Giro(models.Model):
-    nombre = models.CharField(max_length=200)
-    fecha_registro = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.nombre
-
-
+    
 class Proveedor(models.Model):
     nombre = models.CharField(max_length=100)
     direccion = models.TextField(null=True)
@@ -59,21 +51,9 @@ class Cliente(models.Model):
     ciudad_entrega = models.CharField(max_length=100, null=True)
     campo_libre = models.CharField(max_length=50, null=True)
     comentarios = models.TextField(null=True)
-    empresa = models.CharField(max_length=100, null=True)
-    giro = models.ForeignKey(Giro,on_delete=models.RESTRICT)
-    logo = models.ImageField(upload_to='logos',blank=True)
-    homepage = models.CharField(max_length=50,null=True)
-    
+
     def __str__(self):
         return self.rfc
-
-class comunicaCliente(models.Model):
-    cliente = models.ForeignKey(Cliente,on_delete=models.RESTRICT)
-    fecha_contacto = models.DateTimeField(auto_now_add=True)
-    comunicacion = models.TextField(null=True)
-
-    def __str__(self):
-        return self.usuario.username
 
 class Pedido(models.Model):
     

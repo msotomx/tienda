@@ -555,11 +555,11 @@ def grabar_datos(request):
 
 # SECCION PARA TOMAR LOS DATOS DE PAYPAL Y 
 # Y GUARDAR EN LA TABLA DE CLIENTE 
-"""
+
 from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.models import PayPalIPN
 from django.http import HttpResponse
-#from .models import Cliente
+from .models import Cliente
 
 @csrf_exempt
 def paypal_ipn_receiver(request):
@@ -576,4 +576,3 @@ def paypal_ipn_receiver(request):
             )
             return HttpResponse("OK")
     return HttpResponse("FAIL")
-"""
